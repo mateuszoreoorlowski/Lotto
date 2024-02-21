@@ -1,6 +1,6 @@
 package pl.lotto.domain.numbergenerator;
 
-import pl.lotto.domain.numbergenerator.RandomNumberGenerable;
+import pl.lotto.domain.numbergenerator.dto.SixRandomNumbersDto;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ public class WinningNumberGeneratorTestImpl implements RandomNumberGenerable {
     private final Set<Integer> generatedNumbers;
 
     WinningNumberGeneratorTestImpl() {
-        generatedNumbers = Set.of(1,2,3,4,5,6);
+        generatedNumbers = Set.of(1, 2, 3, 4, 5, 6);
     }
 
     WinningNumberGeneratorTestImpl(Set<Integer> generatedNumbers) {
@@ -18,7 +18,9 @@ public class WinningNumberGeneratorTestImpl implements RandomNumberGenerable {
     }
 
     @Override
-    public Set<Integer> generateSixRandomNumbers() {
-        return generatedNumbers;
+    public SixRandomNumbersDto generateSixRandomNumbers() {
+        return SixRandomNumbersDto.builder()
+                .numbers(generatedNumbers)
+                .build();
     }
 }
